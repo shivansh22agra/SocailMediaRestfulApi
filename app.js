@@ -1,7 +1,15 @@
-import express from 'express';
-const app = express();
-app.use("/", (req, res, next) => {
-  console.log("Hello World");
-  
-});
-app.listen(5000,()=>console.log('shuru hua'));
+import express from "express";
+import mongoose from "mongoose";
+const app=express();
+mongoose.set('strictQuery', false);
+mongoose
+  .connect(
+    "mongodb+srv://shivansh:Password123@cluster0.ndhbryo.mongodb.net/Blog?retryWrites=true&w=majority",
+    { useNewUrlParser: true, }
+  )
+  .then(() => app.listen(5000, () => console.log("shuru hua")))
+  .catch((err) => console.log(err));
+// const app = express();
+// app.use("/", (req, res, next) => {
+//   console.log("Hello World");
+// });
